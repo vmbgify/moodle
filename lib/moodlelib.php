@@ -2669,7 +2669,7 @@ function require_login($courseorid = null, $autologinguest = true, $cm = null, $
     global $CFG, $SESSION, $USER, $PAGE, $SITE, $DB, $OUTPUT;
 
     // Must not redirect when byteserving already started.
-    if (!empty($_SERVER['HTTP_RANGE'])) {
+    if (!empty($_SERVER['HTTP_RANGE']) && stripos($_SERVER['HTTP_RANGE'], "bytes=0-") !== 0) {
         $preventredirect = true;
     }
 
